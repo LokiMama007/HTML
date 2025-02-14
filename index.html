@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Verification</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="captcha">
+        <h2>Are you a human?</h2>
+        <button id="verifyBtn">Verify</button>
+    </div>
+
+    <video id="prankVideo" loop>
+        <source src="LeodasVid.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        document.getElementById("verifyBtn").addEventListener("click", function() {
+            let video = document.getElementById("prankVideo");
+    
+            video.style.display = "block"; // Show video
+            video.load();
+            video.play()
+                .then(() => {
+                    document.getElementById("captcha").style.display = "none"; // Hide CAPTCHA after video starts
+                })
+                .catch(error => {
+                    console.error("Video playback failed:", error);
+                });
+        });
+    </script>
+    
+</body>
+</html>
